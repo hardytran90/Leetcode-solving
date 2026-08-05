@@ -6,6 +6,15 @@ and then add one more letter at a random position.
 
 Return the letter that was added to t.
 '''
+
+'''
+Note:
+Use XOR operator to compare two inputs
+Convert two inputs into two ASCII code and use XOR operator to XOR every element from both inputs together
+Similar elements will be removed from the result except the only different element
+
+'''
+
 class Solution:
     def findTheDifference(self, s: str, t: str) -> str:
         result = 0
@@ -17,7 +26,7 @@ class Solution:
 
 if __name__ == "__main__":
     solution = Solution()
-    s = "abcdef"
-    t = "abcdefg"
+    s = "abcd"
+    t = "edcba"
     check = solution.findTheDifference(s,t)
     print(check)
