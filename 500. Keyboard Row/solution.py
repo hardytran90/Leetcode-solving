@@ -35,7 +35,16 @@ class Solution:
         for i, row in enumerate(rows):
             for ch in row:
                 char_to_row[ch] = i
-        print(char_to_row)
+    # char_to_row format: {'q': 0, 'w': 0, 'e': 0, 'a': 1, 's': 1, 'z': 2, 'x': 2, ...}
+    
+    def is_valid(word, char_to_row):
+        lower_word = word.lower()
+        first_row = char_to_row[lower_word[0]]
+        
+        for ch in lower_word:
+            if char_to_row[ch] != first_row:
+                return False
+            return True
         
 if __name__ == "__main__":
     solution = Solution()
