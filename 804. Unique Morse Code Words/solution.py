@@ -30,5 +30,23 @@ Output: 1
 '''
 
 class Solution:
-    def uniqueMorseRepresentations(self, words: List[str]) -> int:
+    def uniqueMorseRepresentations(self, words: list[str]) -> int:
+        morse = [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.",
+                 "---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+        result = set()
+        
+        for word in words:
+            pieces = []
+            for ch in word:
+                character_index = ord(ch) - 97
+                morse_code = morse[character_index]
+                pieces.append(morse_code)
+            transformation = "".join(pieces)
+            result.add(transformation)
+        return len(result)
+            
+if __name__ == "__main__":
+    solution = Solution()
+    words = ["gin", "zen", "gig", "msg"]
+    print(solution.uniqueMorseRepresentations(words))
         
