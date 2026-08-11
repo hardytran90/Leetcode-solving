@@ -24,4 +24,30 @@ s does not contain '\"' or '\\'.
 
 class Solution:
     def reverseOnlyLetters(self, s: str) -> str:
-        
+        left = 0
+        right = len(s) - 1
+        s = list(s)
+        while left < right:
+            if s[left].isalpha() == True:
+                if s[right].isalpha() == True:
+                    s[left], s[right] = s[right], s[left]
+                    right -= 1
+                    left += 1
+                else:
+                    right -= 1
+            else:
+                left += 1
+        result = "".join(s)
+        return result
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s1 = "ab-cd"
+    s2 = "a-bC-dEf-ghIj"
+    s3 = "Test1ng-Leet=code-Q!"
+    print(solution.reverseOnlyLetters(s1))
+    print(solution.reverseOnlyLetters(s2))
+    print(solution.reverseOnlyLetters(s3))
+
+
+    
