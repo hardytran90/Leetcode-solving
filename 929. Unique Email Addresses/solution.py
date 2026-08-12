@@ -5,6 +5,7 @@ the email may contain one or more '.' or '+'.
 
 For example, in "alice@leetcode.com", "alice" is the local name, 
 and "leetcode.com" is the domain name.
+
 If you add periods '.' between some characters in the local name part of an email address, 
 mail sent there will be forwarded to the same address without dots in the local name. 
 Note that this rule does not apply to domain names.
@@ -53,15 +54,17 @@ class Solution(object):
         """
         result = set()
         for em in emails:
-            local_name, domain_name = em.split("@", 1)
-            local_name = local_name.split("+", 1)[0]
-            local_name = local_name.replace(".", "")
-            result.add(local_name + "@" + domain_name)
+            localName, domainName = em.split("@",1)
+            localName = localName.split("+",1)[0]
+            localName = localName.replace(".","")
+            result.add(localName + "@" + domainName)
         return len(result)
-    
+
 if __name__ == "__main__":
     solution = Solution()
-    emails = emails = ["test.email+alex@leetcode.com",
-                       "test.e.mail+bob.cathy@leetcode.com",
-                        "testemail+david@lee.tcode.com"]
-    print(solution.numUniqueEmails(emails))
+    emails1 = ["test.email+alex@leetcode.com",
+               "test.e.mail+bob.cathy@leetcode.com",
+                "testemail+david@lee.tcode.com"]
+    emails2 = ["a@leetcode.com","b@leetcode.com","c@leetcode.com"]
+    print(solution.numUniqueEmails(emails1))
+    print(solution.numUniqueEmails(emails2))

@@ -9,7 +9,9 @@ Example 1:
 Input: s = "abbaca"
 Output: "ca"
 Explanation: 
-For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, and this is the only possible move.  The result of this move is that the string is "aaca", of which only "aa" is possible, so the final string is "ca".
+For example, in "abbaca" we could remove "bb" since the letters are adjacent and equal, 
+and this is the only possible move. The result of this move is that the string is "aaca", 
+of which only "aa" is possible, so the final string is "ca".
 
 Example 2:
 Input: s = "azxxzy"
@@ -22,3 +24,18 @@ s consists of lowercase English letters.
 
 class Solution:
     def removeDuplicates(self, s: str) -> str:
+        stack = []
+        s = list(s)
+        for character in s:
+            if stack and stack[-1] == character:
+                stack.pop()
+            else:
+                stack.append(character)
+        return "".join(stack)
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s1 = "abbaca"
+    s2 = "azxxzy"
+    print(solution.removeDuplicates(s1))
+    print(solution.removeDuplicates(s2))
