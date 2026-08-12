@@ -51,3 +51,17 @@ class Solution(object):
         :type emails: List[str]
         :rtype: int
         """
+        result = set()
+        for em in emails:
+            local_name, domain_name = em.split("@", 1)
+            local_name = local_name.split("+", 1)[0]
+            local_name = local_name.replace(".", "")
+            result.add(local_name + "@" + domain_name)
+        return len(result)
+    
+if __name__ == "__main__":
+    solution = Solution()
+    emails = emails = ["test.email+alex@leetcode.com",
+                       "test.e.mail+bob.cathy@leetcode.com",
+                        "testemail+david@lee.tcode.com"]
+    print(solution.numUniqueEmails(emails))
