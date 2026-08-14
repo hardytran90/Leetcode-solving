@@ -27,4 +27,22 @@ str1 and str2 consist of English uppercase letters.'''
 
 class Solution:
     def gcdOfStrings(self, str1: str, str2: str) -> str:
+        # check the condition of 2 strings
+        if str1 + str2 != str2 + str1:
+            return ""
         
+        def gcd(a: int, b: int) -> int:
+                # if b == 0, the greatest common divisor of a and b is a
+                while b:
+                    a, b = b, a % b
+                return a
+        
+        # calculate the len of result string
+        g = gcd(len(str1), len(str2))
+        return str1[:g] #str2 is still correct
+        
+if __name__ == "__main__":
+    solution = Solution()
+    str1 = "AAAAAC"
+    str2 = "AAA"
+    print(solution.gcdOfStrings(str1, str2))
