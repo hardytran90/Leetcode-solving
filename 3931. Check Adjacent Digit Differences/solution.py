@@ -29,4 +29,12 @@ s consists only of digits.
 
 class Solution:
     def isAdjacentDiffAtMostTwo(self, s: str) -> bool:
-        
+        for ch in range(0, len(s) - 1):
+            if abs(int(s[ch]) - int(s[ch + 1])) > 2:
+                return False
+        return True
+
+if __name__ == "__main__":
+    solution = Solution()
+    s = "129"
+    print(solution.isAdjacentDiffAtMostTwo(s))
