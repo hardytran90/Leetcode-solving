@@ -33,4 +33,16 @@ There is at least one word in s.
 
 class Solution:
     def reverseWords(self, s: str) -> str:
-      
+        splitted_words = s.split()
+        reverse_words = reversed(splitted_words)
+        result = ' '.join(reverse_words)
+        return result
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s1 = "the sky is blue"
+    s2 = "  hello world  "
+    s3 = "a good   example"
+    print(solution.reverseWords(s1))
+    print(solution.reverseWords(s2))
+    print(solution.reverseWords(s3))
