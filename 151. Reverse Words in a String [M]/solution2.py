@@ -29,26 +29,27 @@ Constraints:
 s contains English letters (upper-case and lower-case), digits, and spaces ' '.
 There is at least one word in s.
 '''
-
-
 class Solution:
     def reverseWords(self, s: str) -> str:
         chars = list(s)
         n = len(chars)
 
+        # Use 2 pointers to clear unnecessary spaces before and after words
+        # fast pointer always goes before slow pointer
         slow = 0
         for fast in range(n):
             if chars[fast] != ' ':
-                if slow != 0 and chars[slow - 1] != ' ':
+                if slow != 0 and chars[fast - 1] == ' ': # At the beginning of next word: slow = ' ', fast = first character of next word => set slow = space, plus 1 slow, set slow = fast <= first character
                     chars[slow] = ' '
                     slow += 1
                 chars[slow] = chars[fast]
                 slow += 1
-        chars = chars[:slow]  
+        chars = chars[:slow]  # Ignore the left spaces at the end of string
         n = slow
 
-        self.reverse(chars, 0, n - 1)
+        self.reverse(chars, 0, n - 1)   # Reverse all character positions (All the words are in reversed version)
 
+        # Reverse every single word into right word
         start = 0
         for i in range(n + 1):
             if i == n or chars[i] == ' ':
@@ -57,6 +58,7 @@ class Solution:
 
         return ''.join(chars)
 
+    # Helper function
     def reverse(self, arr, left, right):
         while left < right:
             arr[left], arr[right] = arr[right], arr[left]
