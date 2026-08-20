@@ -27,4 +27,18 @@ Constraints:
 
 class Solution:
     def trafficSignal(self, timer: int) -> str:
-        
+        if timer == 0:
+            return "Green"
+        elif timer == 30:
+            return "Orange"
+        elif 30 < timer <= 90:
+            return "Red"
+        else:
+            return "Invalid"
+
+if __name__ == "__main__":
+    solution = Solution()
+    print(solution.trafficSignal(60))
+    print(solution.trafficSignal(5))
+    print(solution.trafficSignal(0))
+    print(solution.trafficSignal(30))
