@@ -40,3 +40,18 @@ message consists of lowercase English letters and ' '.
 
 class Solution:
     def decodeMessage(self, key: str, message: str) -> str:
+        alphabet = "abcdefghijklmnopqrstuvwxyz"
+        result = {}
+        i = 0
+        for ch in key:
+            if ch != ' ' and ch not in result:
+                result[ch] = alphabet[i]
+                i += 1
+        return ''.join(result[ch] if ch != ' ' else ' ' for ch in message)
+    
+if __name__ == "__main__":
+    solution = Solution()
+    key = "eljuxhpwnyrdgtqkviszcfmabo"
+    message = "zwx hnfx lqantp mnoeius ycgk vcnjrdb"
+    print(solution.decodeMessage(key,message))
+    
