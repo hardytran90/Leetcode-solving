@@ -31,4 +31,16 @@ s contains an even number of vertical bars '|'.
 
 class Solution:
     def countAsterisks(self, s: str) -> int:
-        
+        split_s = s.split('|')
+        total = 0
+        for index, group in enumerate(split_s):
+            if index % 2 == 0:
+                for ch in group:
+                    if ch == "*":
+                        total += 1
+        return total
+
+if __name__ == "__main__":
+    solution = Solution()
+    s = "l|*e*et|c**o|*de|"
+    print(solution.countAsterisks(s))
