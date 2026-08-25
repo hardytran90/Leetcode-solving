@@ -25,4 +25,16 @@ All values of indices are unique.
 
 class Solution:
     def restoreString(self, s: str, indices: list[int]) -> str:
+        n = len(s)
+        result = [''] * n
+        
+        for i in range(n):
+            result[indices[i]] = s[i]
+        return ''.join(result)
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s = "codeleet"
+    indices = [4,5,6,7,0,2,1,3]
+    print(solution.restoreString(s,indices))
         
