@@ -29,19 +29,43 @@ word1[i] and word2[i] consist of lowercase letters.
 
 class Solution:
     def arrayStringsAreEqual(self, word1: list[str], word2: list[str]) -> bool:
+        '''
         string1 = ''
         string2 = ''
         for i in range(len(word1)):
             string1 = string1 + word1[i]
         for i in range(len(word2)):
             string2 = string2 + word2[i]
-        if string1 != string2:
-            return False
-        else:
-            return True
+        return string1 != string2
+        '''
+        
+        ''' Shorter solution
+         return ''.join(word1) == ''.join(word2) '''
+    
+        # Two pointers solution
+        
+        i, j = 0, 0      # each string group's index in an array
+        p1, p2 = 0, 0     # each element index in each group
+        
+        while i < len(word1) and j < len(word2):
+            if word1[i][p1] != word2[j][p2]:
+                return False
+            
+            p1 += 1
+            p2 += 1
+            
+            if p1 == len(word1[i]):
+                i += 1
+                p1 = 0
+            if p2 == len(word2[j]):
+                j += 1
+                p2 = 0
+
+        # Make sure traversal all of elements
+        return i == len(word1) and j == len(word2)
 
 if __name__ == "__main__":
     solution = Solution()
-    word1 = ["a", "cb"]
+    word1 = ["ab", "c"]
     word2 = ["a", "bc"]
     print(solution.arrayStringsAreEqual(word1, word2))
