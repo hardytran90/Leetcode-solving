@@ -22,4 +22,10 @@ s consists of lowercase English letters.
 
 class Solution:
     def areOccurrencesEqual(self, s: str) -> bool:
-        
+        counts = {s.count(ch) for ch in set(s)}
+        return len(counts) == 1
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s = "abacbc"
+    print(solution.areOccurrencesEqual(s))
