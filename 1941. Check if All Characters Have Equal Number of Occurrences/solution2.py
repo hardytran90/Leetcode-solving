@@ -20,10 +20,13 @@ Constraints:
 s consists of lowercase English letters.
 '''
 
+from collections import Counter
+
 class Solution:
     def areOccurrencesEqual(self, s: str) -> bool:
-        counts = {s.count(ch) for ch in set(s)}
-        return counts
+        frequent = Counter(s)           # freq = {'a': 2, 'b': 2, 'c': 2}
+        values = frequent.values()      # values = [2, 2, 2]
+        return len(set(values)) == 1    # No duplicate in set
     
 if __name__ == "__main__":
     solution = Solution()
