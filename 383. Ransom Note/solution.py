@@ -21,6 +21,23 @@ Constraints:
 ransomNote and magazine consist of lowercase English letters.
 '''
 
+from collections import Counter
 class Solution:
     def canConstruct(self, ransomNote: str, magazine: str) -> bool:
+        ransom_count = Counter(ransomNote)
+        maga_count = Counter(magazine)
         
+        valid = True
+        
+        for ch in ransom_count:
+            if ransom_count[ch] > maga_count[ch]:
+                valid = False
+                break
+        
+        return valid
+    
+if __name__ == "__main__":
+    solution = Solution()
+    ransomNote = "aa"
+    magazine = "aab"
+    print(solution.canConstruct(ransomNote, magazine))
