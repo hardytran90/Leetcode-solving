@@ -35,6 +35,16 @@ Constraints:
 s and target consist of lowercase English letters.
 '''
 
+from collections import Counter
 class Solution:
     def rearrangeCharacters(self, s: str, target: str) -> int:
-        return
+        s_counter = Counter(s)
+        target_counter = Counter(target)
+        
+        return min(s_counter[ch] // target_counter[ch] for ch in target_counter)
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s = "abc"
+    target = "abcd"
+    print(solution.rearrangeCharacters(s, target))
