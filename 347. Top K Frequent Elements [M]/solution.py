@@ -22,6 +22,25 @@ It is guaranteed that the answer is unique.
 
 Follow up: Your algorithm's time complexity must be better than O(n log n), where n is the array's size.
 '''
-
+from collections import Counter
 class Solution:
-    def topKFrequent(self, nums: list[int], k: int) -> list[int]
+    def topKFrequent(self, nums: list[int], k: int) -> list[int]:
+        nums_counter = Counter(nums)
+        sort_nums = nums_counter.most_common(k)
+        
+        result = []
+        for i, _ in sort_nums:
+            result.append(i)
+        
+        return result
+        
+        
+if __name__ == "__main__":
+    solution = Solution()
+    nums = [1,1,1,2,2,3]
+    k = 2
+    print(solution.topKFrequent(nums, k))
+    
+
+# Other shorter solution
+# return [x for x, _ in Counter(nums).most_common(k)]
