@@ -22,6 +22,30 @@ Constraints:
 text consists of lower case English letters only.
 '''
 
+from collections import Counter
 class Solution:
     def maxNumberOfBalloons(self, text: str) -> int:
+        word = "balloon"
+        word_counter = Counter(word)
+        text_counter = Counter(text)
+        
+        valid = True
+        for ch in word_counter:
+            if text_counter[ch] < word_counter[ch]:
+                valid = False
+                nums = 0
+                break
+            
+        if valid:
+            nums = []
+            for ch in word_counter:
+                nums.append(text_counter[ch] // word_counter[ch])
+            nums = min(nums)
+        
+        return nums
+    
+if __name__ == "__main__":
+    solution = Solution()
+    text = "loonbalxballpoon"
+    print(solution.maxNumberOfBalloons(text))
         
