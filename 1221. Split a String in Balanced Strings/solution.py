@@ -30,3 +30,24 @@ s is a balanced string.'''
 
 class Solution:
     def balancedStringSplit(self, s: str) -> int:
+        balance = 0
+        count = 0
+        
+        for i in s:
+            if i == "R":
+                balance += 1
+                if balance == 0:
+                    count += 1
+            elif i == "L":
+                balance -= 1
+                if balance == 0:
+                    count += 1
+        
+        return count
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s1 = "RLRRRLLRLL"
+    s2 = "LRLLRRLLLRRR"
+    print(solution.balancedStringSplit(s1)) # count = 2
+    print(solution.balancedStringSplit(s2)) # count = 3
