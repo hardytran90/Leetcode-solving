@@ -33,4 +33,4 @@ pattern consists of only the letters 'I' and 'D'.
 
 class Solution:
     def smallestNumber(self, pattern: str) -> str:
-        
+                                                                                                                                                                                                                                                    
