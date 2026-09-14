@@ -36,4 +36,13 @@ All strings consist of lowercase and uppercase English letters and the space cha
 
 class Solution:
     def destCity(self, paths: list[list[str]]) -> str:
-        
+        start_points = set()
+        start_points = {i for i,j in paths}
+        for i,j in paths:
+            if j not in start_points:
+                return j
+
+if __name__ == "__main__":
+    solution = Solution()
+    paths = [["London","New York"],["New York","Lima"],["Lima","Sao Paulo"]]
+    print(solution.destCity(paths))
