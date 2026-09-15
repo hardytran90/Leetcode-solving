@@ -31,4 +31,16 @@ s contains no leading or trailing spaces.
 '''
 class Solution:
     def sortSentence(self, s: str) -> str:
+        words = s.split()
+        result = [""] * len(words)
         
+        for word in words:
+            position = int(word[-1])
+            result[position - 1] = word[:-1]
+        
+        return " ".join(result)
+    
+if __name__ == "__main__":
+    solution = Solution()
+    s = "is2 sentence4 This1 a3"
+    print(solution.sortSentence(s))
