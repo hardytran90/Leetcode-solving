@@ -26,4 +26,25 @@ s consists of uppercase and lowercase letters.
 
 class Solution:
     def halvesAreAlike(self, s: str) -> bool:
+        count1 = 0
+        count2 = 0
+        length = int(len(s) / 2)
+        vowels = ['a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U']
         
+        for i in range(length):
+            if s[i] in vowels:
+                count1 += 1
+                
+        for j in range(length, len(s)):
+            if s[j] in vowels:
+                count2 += 1
+                
+        if count1 == count2:
+            return True
+        else:
+            return False
+
+if __name__ == "__main__":
+    solution = Solution()
+    s = "textbook"
+    print(solution.halvesAreAlike(s))
