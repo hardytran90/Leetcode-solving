@@ -26,4 +26,17 @@ Constraints:
 
 class Solution:
     def findNumbers(self, nums: list[int]) -> int:
-        
+        result = 0
+        for x in nums:
+            digits = 0
+            while x > 0:
+                x //= 10
+                digits += 1
+            if digits % 2 == 0:
+                result += 1
+        return result
+
+if __name__ == "__main__":
+    solution = Solution()
+    nums = [12,345,2,6,7896]
+    print(solution.findNumbers(nums))
